@@ -21,16 +21,13 @@ public class Main {
         produto1.aplicarDesconto(10);
         System.out.println("Novo preço do produto 1 (Teclado) com desconto: " + produto1.getPreco());
 
-        // Exibindo o primeiro produto do carrinho (pode lançar exceção se a lista estiver vazia)
-        try {
-            Produto primeiroProduto = carrinho.getPrimeiroProduto();
-            System.out.println("Primeiro produto no carrinho: " + primeiroProduto.getNome());
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Erro: O carrinho está vazio!");
-        }
-
-        // Removendo um produto e verificando o número de produtos no carrinho
+        // Removendo todos os produtos para deixar o carrinho vazio
+        carrinho.removerProduto(produto1);
         carrinho.removerProduto(produto2);
-        System.out.println("Número de produtos no carrinho após remoção: " + carrinho.getNumeroDeProdutos());
+        carrinho.removerProduto(produto3);
+
+        // Exibindo o primeiro produto do carrinho sem o bloco try-catch
+        Produto primeiroProduto = carrinho.getPrimeiroProduto();  // Isso vai causar uma exceção se o carrinho estiver vazio
+        System.out.println("Primeiro produto no carrinho: " + primeiroProduto.getNome());
     }
 }
